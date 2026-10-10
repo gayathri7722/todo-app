@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Manager | To-Do List App by Gayathri Sava</title>
+  <meta name="description" content="A fast, accessible to-do list app with add, edit, delete, filters and automatic saving in your browser. Built with vanilla JavaScript.">
+  <meta name="author" content="Gayathri Sava">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#14213d">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Task Manager | To-Do List App">
+  <meta property="og:description" content="Add, edit, delete and filter tasks. Your list is saved in your browser automatically.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2716%27 fill=%27%230b6e6e%27/%3E%3Cpath d=%27M26 52l16 16 32-34%27 fill=%27none%27 stroke=%27white%27 stroke-width=%2711%27 stroke-linecap=%27round%27 stroke-linejoin=%27round%27/%3E%3C/svg%3E">
+  <script>(function(){var d=document.documentElement;d.classList.add('js');try{var t=localStorage.getItem('theme');if(t!=='dark'&&t!=='light'){t=window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light';}d.setAttribute('data-theme',t);}catch(e){}})();</script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <div class="wrap header-row">
+      <p class="brand">Gayathri Sava</p>
+      <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true"></span>
+        <span>Dark mode</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" tabindex="-1">
+    <div class="wrap">
+      <section class="app" aria-labelledby="app-title">
+        <h1 id="app-title">Task Manager</h1>
+        <p class="lead">Add what you need to do, tick it off when it's done. Your list is saved in this browser automatically.</p>
+
+        <p id="storage-notice" class="notice" role="status" hidden>Your browser is blocking storage, so tasks will be lost when you close this page.</p>
+
+        <form id="task-form" class="add-form" novalidate aria-label="Add a new task">
+          <div class="add-fields">
+            <div class="field grow">
+              <label for="task-input">New task</label>
+              <input type="text" id="task-input" name="task" maxlength="120" autocomplete="off" placeholder="e.g. Finish Task 3 submission" aria-describedby="task-error">
+            </div>
+            <div class="field">
+              <label for="task-priority">Priority</label>
+              <select id="task-priority" name="priority">
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+              </select>
+            </div>
+            <button type="submit" class="btn add-btn">Add task</button>
+          </div>
+          <p id="task-error" class="error-msg" aria-live="polite"></p>
+        </form>
+
+        <div class="toolbar">
+          <div id="filters" class="filters" role="group" aria-label="Filter tasks">
+            <button type="button" class="filter-btn" data-filter="all" aria-pressed="true">All <span class="count" data-count="all">0</span></button>
+            <button type="button" class="filter-btn" data-filter="active" aria-pressed="false">Active <span class="count" data-count="active">0</span></button>
+            <button type="button" class="filter-btn" data-filter="completed" aria-pressed="false">Completed <span class="count" data-count="completed">0</span></button>
+          </div>
+        </div>
+
+        <div class="progress" aria-hidden="true"><div id="progress-bar" class="progress-bar"></div></div>
+
+        <h2 id="list-title" class="visually-hidden">Your tasks</h2>
+        <ul id="task-list" class="task-list" aria-labelledby="list-title"></ul>
+        <p id="empty-state" class="empty" hidden></p>
+
+        <div class="list-footer">
+          <p id="items-left" class="items-left">0 tasks left</p>
+          <button type="button" id="clear-completed" class="btn-ghost" disabled>Clear completed</button>
+        </div>
+
+        <p id="announcer" class="visually-hidden" role="status" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="wrap footer-inner">
+      <p><small>&copy; 2026 Gayathri Sava. Thiranex Web Development Internship, Task 3.</small></p>
+      <p><small><a href="https://gayathri7722.github.io/responsive-portfolio/">Back to my portfolio</a></small></p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
